@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Загрузка работы</title>
+</head>
+<body>
+    <h1>Загрузка работы</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <label for="password">Пароль:</label>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <label for="name">Название работы:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="text">Текст работы:</label>
+        <input type="text" id="text" name="text" required><br><br>
+
+        <label for="photo">Фотография работы:</label>
+        <input type="file" id="photo" name="photo" accept="image/*" required><br><br>
+
+        <input type="checkbox" name="checkbox" value="github"> github<br>
+        <input type="text" name="text_github" placeholder="Enter text"><br>
+        <input type="checkbox" name="checkbox" value="web">web<br>
+        <input type="text" name="text_web" placeholder="Enter text"><br>
+        <input type="checkbox" name="checkbox" value="kwork">kwork<br>
+        <input type="text" name="text_kwork" placeholder="Enter text"><br>
+        <input type="checkbox" name="checkbox" value="youtube">youtube<br>
+        <input type="text" name="text_youtube" placeholder="Enter text"><br>
+        <input type="submit" value="Отправить">
+    </form>
+</body>
+</html>

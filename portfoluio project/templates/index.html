@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John Portfolio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/style.css') }}">
+
+</head>
+<body>
+
+<header id="stickyHeader">
+    <ul>
+        <div class="adaptive-header-div"><h1 onclick="scrollToElement('JohnStart')">John </h1><button class="adaptive-header-btn"><img src="{{ url_for('static', filename='icons/menu_icon.svg') }}"></button></div>
+        <li><h1 onclick="scrollToElement('About')" >О нас</h1></li>
+        <li><h1 onclick="scrollToElement('Works')" >Работы</h1></li>
+        <li><h1 onclick="scrollToElement('Contacts')" >Контакты</h1></li>
+
+    </ul>
+</header>
+
+<div id="JohnStart" class="JohnStart">
+    <img src="{{ url_for('static', filename='prtfoliophoto.png') }}" class="startimage">
+    <div>
+        <h1 class="myname">Привет меня зовут Женя!</h1>
+        <h3>Я fullstack разработчик на Python, <br>
+        cо стажем 2 года.</h3>
+    </div>
+</div>
+
+<div id="About" class="About">
+    <h1>Я пишу код на python уже 2 года и я могу вам помочь с этими навыками:</h1>
+        <ul>
+            <li>Создание web сайтов с помощью Flask</li>
+            <li>Создание Телеграм ботов с помощью Aiogram</li>
+            <li>Интерфейс программы с помощью tkinter</li>
+            <li>Работа с базами данных Sqlite</li>
+        </ul>
+        <ul>
+            <li>Frontend сайта на чистом html, css, javascript</li>
+            <li>Создание простых скрипв для автоматизации</li>
+            <li>Работа с форматом Json</li>
+            <li>Работа с Requests</li>
+        </ul>
+</div>
+
+
+<h1 style="color: white; font-size: 250%; width: 100%; text-align: center; padding-block: 10%;">Мои Работы</h1>
+
+<h1 style="color: white; font-size: 250%; width: 100%; text-align: center; padding-block: 10%;">
+
+</h1>
+
+<section class="container">
+    <div class="work_btn_div">
+        <button class="previous_buton" onclick="previous_button()"><</button>
+    </div>
+	<div class="slider-wrapper" id="Works">
+		<div class="slider" id="slider">
+		    {% for work in works %}
+			<div class="work_cord">
+                <h1>{{work[0]}}</h1>
+                <img src="{{ url_for('static', filename='workslogo/'+work[2]) }}" class="work_image">
+                <p>{{work[1]}}</p>
+                <button onclick="child_windows_active()">ссылки</button>
+            </div>
+            <div class="child_window disabled">
+                <div class="child_window_content">
+                    <h1>Ссылки</h1>
+                    <button class="esc" onclick="child_windows_deactive()">×</button>
+                    <h1>{{work[3]}}</h1>
+                    {% if "web" in work[3] %}
+                    <a href="{{work[3]['web']}}" target="_blank" class="contact-button" style="background-color: white; ">
+                        <img src="https://www.freepnglogos.com/uploads/logo-website-png/logo-website-file-globe-icon-svg-wikimedia-commons-21.png"  class="contact-logo">
+                    </a>
+                    {% endif %}
+                    {% if "github" in work[3] %}
+                    <a href="{{work[3]['github']}}" target="_blank" class="contact-button">
+                        <img src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png"class="contact-logo">
+                    </a>
+                    {% endif %}
+                    {% if "kwork" in work[3] %}
+                    <a href="{{work[3]['kwork']}}" target="_blank" class="contact-button">
+                        <img src="https://play-lh.googleusercontent.com/vYFpgwJDzugewVqpeg9M3_fJxdCOPkpfihv8GueEpYlHQ-9-liiTefw8N-pfy5DGRFM=w240-h480-rw"class="contact-logo">
+                    </a>
+                    {% endif %}
+                    {% if "youtube" in work[3] %}
+                    <a href="{{work[3]['youtube']}}" target="_blank" class="contact-button" style="background-color: white; display: flex; align-items: center;">
+                        <img src="https://freelogopng.com/images/all_img/1656503823black-youtube-logo.png" class="contact-logo" style="height: 75%;">
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+		</div>
+	</div>
+    <div class="work_btn_div">
+        <button class="next_buton" onclick="next_button()">></button>
+    </div>
+</section>
+
+
+
+<h1 style="color: white; font-size: 250%; width: 100%; text-align: center; padding-block: 10%;">Контакты</h1>
+
+<div id="Contacts">
+
+        <div>
+            <a href="https://github.com/JonPlayGo" target="_blank" class="contact-button">
+                <img src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png"class="contact-logo">
+            </a>
+        </div>
+        <div>
+            <a href="/" target="_blank" class="contact-button" style="background-color: white;">
+                <img src="https://www.freepnglogos.com/uploads/logo-website-png/logo-website-file-globe-icon-svg-wikimedia-commons-21.png"  class="contact-logo">
+            </a>
+        </div>
+        <div>
+            <a href="https://www.linkedin.com/in/jasur-atabaev-197aab209/" target="_blank" class="contact-button" style="background-color: white;">
+                <img src="https://logodix.com/logo/558722.png"  class="contact-logo">
+            </a>
+        </div>
+        <div>
+            <a href="mailto:johngoworks@gmail.com" class="contact-button" style="background-color: white;">
+                <img src="https://cdn-icons-png.flaticon.com/512/5393/5393979.png"  class="contact-logo">
+            </a>
+        </div>
+        <div>
+            <a href="https://kwork.ru/user/johngoworks" target="_blank" class="contact-button" style="background-color: white;">
+                <img src="https://play-lh.googleusercontent.com/vYFpgwJDzugewVqpeg9M3_fJxdCOPkpfihv8GueEpYlHQ-9-liiTefw8N-pfy5DGRFM=w240-h480-rw" class="contact-logo" style="border-radius: 10px;">
+            </a>
+        </div>
+        <div>
+            <a href="https://www.youtube.com/channel/UCy5neTnCgtCi4fNqe1njzTQ" target="_blank" class="contact-button" style="background-color: white; display: flex; align-items: center;">
+                <img src="https://freelogopng.com/images/all_img/1656503823black-youtube-logo.png" class="contact-logo" style="height: 75%;">
+            </a>
+        </div>
+</div>
+
+<footer>
+    <div class="footer_container">
+      <div class="left">
+        <button class="github-button"><a href="https://github.com">GitHub</a></button>
+        <p class="email">Email: johngoworks@gmail.com</p>
+      </div>
+      <div class="right">
+        <p class="copyright">© 2023 Все права защищены</p>
+      </div>
+    </div>
+  </footer>
+
+
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
